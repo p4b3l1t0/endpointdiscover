@@ -32,6 +32,7 @@ Clone the repository to your local machine:
 ```bash
 git clone https://github.com/p4b3l1t0/endpointdiscover.git
 cd endpointdiscover
+pip install -r requirements.txt
 ```
 ## Usage
 To use the tool, run the following command from the terminal, replacing <domain> with the domain you wish to analyze:
