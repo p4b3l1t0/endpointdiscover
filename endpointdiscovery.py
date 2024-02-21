@@ -1,5 +1,3 @@
-puedes ver el error en la linea>
-
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -33,7 +31,11 @@ def extract_js_links(url):
 
 # Function to search in common JS file directories
 def search_js_folders(base_url):
-    common_paths = ['static/js', 'assets/js', '_next/static/chunks']
+    common_paths = [
+    'static/js', 'assets/js', '_next/static/chunks', 'dist/js', 'build/static/js', 'public/js',
+    'js', 'vue/js', 'angular/js', 'assets/scripts', 'scripts', 'webpack/js', 'out/_next/static/chunks',
+    'static/assets/js', 'bundles/js', 'dist/js', 'build/static/js', 'wp-includes/js', 'js', 'scripts',
+    'assets/scripts', 'public/js', 'vue', 'react', 'angular', 'lib', 'vendor', 'bundles']
     found_js_files = []
     for path in common_paths:
         full_path = f"{base_url}/{path}"
@@ -51,7 +53,7 @@ def extract_endpoints(js_urls, without_ext=False):
             potential_urls = re.findall(r'https?://[^\s"\']+|/[^/\s"\']+[^\s"\';]+', js_content)
             if without_ext:
                 # Filter out URLs ending in a known file extension
-                potential_urls = [url for url in potential_urls if not re.search(r'\.(js|html|woff2|pdf|txt|css|tsx|ts)$', url)]
+                potential_urls = [url for url in potential_urls if not re.search(r'\.(js|html|woff2|pdf|txt|css|tsx|ts|png|svg|jpg|jpeg)$', url)]
             endpoints.extend(potential_urls)
         except requests.exceptions.RequestException as e:
             print(f"Error downloading {js_url}: {e}")
@@ -86,5 +88,3 @@ js_links_folders = search_js_folders(domain)
 all_js_links = list(set(js_links_initial + js_links_folders))
 endpoints = extract_endpoints(all_js_links, args.without_ext)
 verificar_endpoints(domain, endpoints, args.no_errors, args.output)
-
-
