@@ -37,6 +37,10 @@ pip install -r requirements.txt
 ## Usage
 To use the tool, run the following command from the terminal, replacing <domain> with the domain you wish to analyze:
 
+```bash
+python3.10 endpointdiscovery.py -d https://domain.com -ne -o results.txt 
+```
+
 Options:
 
 * -d or --domain: Specify the domain to analyze (required).
