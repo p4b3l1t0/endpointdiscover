@@ -48,7 +48,4 @@ Options:
 * -we or --without-ext: Skip endpoints ending with a file extension.
 * -o or --output: Save results in a file.
 
-## License
-
-This project is licensed under the MIT License - see the https://chat.openai.com/c/LICENSE.md file for details.
 
